@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>To Do App</title>
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+</head>
+<body>
+	<header>
+		<h1>Invoice App</h1>
+	</header>
+	<div class="content">
+		<div class="form">
+			<div class="boilerform">
+    		<form NAME="invoice" class="input" action="">
+    			<label class="form_label">Item</label>
+    			<input type="text" name="name" class="item">
+    			<label class="form_label">Price</label>
+    			<input type="text" name="price"class="price">
+    			<label class="form_label">Discount</label>
+    			<input type="text" name="discount"class="discount">
+    			<input type="file" onchange="previewFile()">
+    			<input type="submit" value="Add">
+    		</form>
+    		<div class="invoice">
+				<img src="" height="200" alt="Image preview...">
+				<table class="invoice_table table">
+				  <thead class="invoice_head head">
+				    <tr class="invoice_row">
+				      <th class="invoice_header" style="width: 20px;" scope="col">Remove</th>
+				      <th class="invoice_header" scope="col">Item</th>
+				      <th class="invoice_header" scope="col">Price</th>
+				      <th class="invoice_header" scope="col">Discount</th>
+				      <th class="invoice_header" scope="col">Tax</th>
+				      <th class="invoice_header" scope="col">Item Total</th>
+				    </tr>
+				    <tr class="invoice_totals head">
+				      <th class="invoice_header" scope="col"></th>
+				      <th class="invoice_header" scope="col">Number of Items</th>
+				      <th class="invoice_header" scope="col">Total Price</th>
+				      <th class="invoice_header" scope="col">Total Discount</th>
+				      <th class="invoice_header" scope="col">Total Tax</th>
+				      <th class="invoice_header" scope="col">Final Total</th>
+				     </tr> 
+				     <tr class="invoice_totals details">
+				      <th class="remove_item" scope="col"></th>
+				      <th class="total_items" scope="col">0</th>
+				      <th class="price_total" scope="col">0</th>
+				      <th class="total_tax" scope="col">0</th>
+				      <th class="final_total" scope="col">0</th>
+				    </tr>
+				  </thead>
+				 </tbody>
+
+				</table>
+			
+
+
+    			<ul class="item_list">
+    			</ul>
+    			<div class="total_box">
+    			</div>
+    		</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<script>
+   function previewFile(){
+       var preview = document.querySelector('img'); //selects the query named img
+       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+       var reader  = new FileReader();
+
+       reader.onloadend = function () {
+           preview.src = reader.result;
+       }
+
+       if (file) {
+           reader.readAsDataURL(file); //reads the data as a URL
+       } else {
+           preview.src = "";
+       }
+  }
+
+  previewFile();  //calls the function named previewFile()
+  </script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" media="all" href="https://rawgit.com/hankchizljaw/boilerform/master/dist/css/boilerform.min.css" />
+		<script type="text/javascript" src="script/script.js"></script>
+	</footer>	
+</body>
+</html>
