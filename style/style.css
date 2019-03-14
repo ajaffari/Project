@@ -1,26 +1,20 @@
 header {
-	background:#050d1e;
-	color:#cccdd7;
-	padding:25px;
+  background:#050d1e;
+  color:#cccdd7;
+  padding:25px;
 }
 
-.remove {
-    display: none;
-}
-
-.content {
-	border-radius: .6rem;
-    box-shadow: 0 1.2rem 3.6rem rgba(0,0,0,.2);
-	padding:20px;
+body {
+  padding:25px;
 }
 
 p, label, th, tr{
-	color:#212b35;
-	font-family: Helvetica, Arial, sans-serif;
+  color:#212b35;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 input {
-	display: inline-block;
+  display: inline-block;
     height: 52px;
     width: 15%;
     margin: 0 0 15px;
@@ -40,81 +34,36 @@ input {
     appearance: none;
 }
 
-input[type="file"] {
-	box-shadow: 0 0 0 0px;
 
-}
-
-label, input {
-	padding-right: 20px;
-	margin-left: 20px;
-}
- 
 input[type="submit"]{
-	border-color: #5c6ac4;
+    border-color: #5c6ac4;
     border-width: 0.125em;
     display: inline-block;
-    padding: 1.0625em 1.875em;
-    border-radius: 5px;
-    font-family: ShopifySans, Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-weight: 700;
     font-size: 1em;
     line-height: 1.133;
-    -webkit-font-smoothing: antialiased;
-    transition: 150ms ease;
-    transition-property: background-color, border-color, box-shadow, color;
-    text-align: center;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     cursor: pointer;
     box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
     background-color: #5c6ac4;
-    color: #ffffff;
-    border-width: 0.125em;
-    border-style: solid;
-    border-color: transparent;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
 } 
 
 
 input[type="submit"]:hover{
 
     box-shadow: 0 5px 25px 0 rgba(0,0,0,0.25);
-    background-color: transparent;
-    color:#5c6ac4;
+    background-color: #1f6b22;
+    color:#fff;
     border-color: #5c6ac4;
-    border-top-color: rgb(92, 106, 196);
-    border-right-color: rgb(92, 106, 196);
-    border-bottom-color: rgb(92, 106, 196);
-    border-left-color: rgb(92, 106, 196);
     border-width: 0.125em;
-    border-top-width: 0.125em;
-    border-right-width: 0.125em;
-    border-bottom-width: 0.125em;
-    border-left-width: 0.125em;
-
 }
 
-input[type=text], select, textarea{
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  resize: vertical;
-}
-
-/* Style the label to display next to the inputs */
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
-
-/* Style the submit button */
 input[type=submit] {
   background-color: #4CAF50;
   color: white;
@@ -125,33 +74,75 @@ input[type=submit] {
   float: right;
 }
 
-/* Style the container */
+
+
+input[type=text], select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+
+input[type="file"] {
+  box-shadow: 0 0 0 0px;
+  width:100%;
+
+}
+
+
+
+label {
+  font-weight: bolder;
+}
+
+
+
+label, input {
+  padding-right: 20px;
+}
+ 
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+
+.boilerform {
+  padding:1%;
+}
+
 .container {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
 }
 
-/* Floating column for labels: 25% width */
 .col-25 {
   float: left;
   width: 25%;
   margin-top: 6px;
 }
 
-/* Floating column for inputs: 75% width */
 .col-75 {
   float: left;
   width: 75%;
   margin-top: 6px;
 }
 
-/* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
+
+.price {
+  display:inline-block;
+}
+
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
@@ -169,13 +160,5 @@ img {
 }
 
 
-
-.price {
-	display:inline-block;
-}
-
-body {
-	padding:25px;
-}
 
 
