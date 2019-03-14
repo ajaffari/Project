@@ -1,84 +1,79 @@
 $(function(){
 
-	
-//Total Default
-	$('.total').html(0);
-
-
-//Random Hex Generator
-
-
-
 //Declare totals
+
 	let $priceTotal = 0;
-	let $taxTotal = $priceTotal*0.13;
+	let $totalTax = 0;
 	let $itemTotal= 0;
-	let $finalTotal = $priceTotal + $taxTotal;
-	let $tax = 0;
-	let $discount = 0;
+	let $finalTotal = $priceTotal + $totalTax;
+	let $discountTotal = 0;
+	let $grandTotal=0;
+	let $itemCount = 0;
+	let $id =0;
 
-
-	function addDiscount(d){
-		$priceTotal=$priceTotal-($priceTotal*(d/100));
-	}
-//
-	function itemCount() {
-			let $itemCount = $('.item_name').length;
-		$('.total_items').html($itemCount);
-	};
-
-
-	function removeItem(row){
-		$(row).hide();
-	};
-
-
-	$('.item_remove').on('click',function(){
-		$(this).addClass('remove')()
-	})
-
+//Form submit
 
 	$('form').on('submit',function(e){
 
 		e.preventDefault();
 
-		let $item = $('.item').val() || 'Item';
+		formSubmit();
 
-		let $price = parseInt($('.price').val()) || 0;
-		let $discount = parseInt($('.discount').val()) || 0
-		let $discountPercent = $discount/100;
-		let $discountedPrice = $price-($price*$discountPercent);
-		console.log($discount);
+	});
 
+
+	function formSubmit() {
+
+		//Take form inputs and calculate discount and tax
 		
+		let $item = $('.item').val() || 'Item';
+		let $price = parseInt($('.price').val()) || 0;
+		let $discount = parseInt($('.discount').val())/100 || 0
+		let $discountAmount = $price*$discount;
+		let $discountedPrice = $price-($price*$discount);
+		let $hst = ($discountedPrice*0.13);
+
+		//Calculate totals
 
 		$priceTotal = $price + $priceTotal;
-		$tax = $price*0.13;
-		$taxTotal = $taxTotal + $tax;
-		$itemTotal = $priceTotal+$tax;
-		$finalTotal=$priceTotal + $taxTotal;
-		console.log($priceTotal);
-		$('.price_total').html($priceTotal);
-		$('.total_tax').html($taxTotal);
-		$('.final_total').html($finalTotal);
-		$('.total').html(`$${$finalTotal}`);
+		$totalTax = $hst + $totalTax;
+		$itemTotal = $discountedPrice + $hst;
+		$grandTotal= $itemTotal + $grandTotal;
+		$discountTotal= $discountAmount + $discountTotal;
+		$itemCount = $('.item_name').length + 1;
+		$id = $id +1;
+		
+		//Remove item
 
+		$('body').on('click', '.remove_item', function(e) {
+			e.preventDefault();
+		    $(this).closest('tr').remove();		
+		});
+
+		//Add row for item
 
 		$('.invoice_row').after(
-				`<tr class="item_row">
-					 <td class="item_remove"><i class="fas fa-minus-circle"></i></td>
+				`<tr id="item ${$id}">
+					 <td> <a href="#" class="remove_item ${$id}"><i class="fas fa-minus-circle"></i></a></td>
 				     <td class="item_name" scope="col">${$item}</td>
-					 <td class="item_price" scope="col">$${$price}</td>
-					 <td class="item_discount" scope="col">%${$discount}</td>
-					 <td class="item_tax" scope="col">$${$price*0.13}</td>
-					 <td class="item_total" scope="col">${$discountedPrice+($price*.13)}</td></tr>	`);		
+					 <td class="item_price" scope="col">${$price}</td>
+					 <td class="item_discount" scope="col">$${$discountAmount} <p class='percentage'>(%${$discount*100} OFF)</p></td>
+					 <td class="item_tax" scope="col">$${$hst}</td>
+					 <td class="item_total" scope="col">$${$discountedPrice+($hst)}</td></tr>`);		
 		
-		$('.price_total').val($priceTotal);
+		// Update Totals row
+
+		$('.total_items').html($itemCount);
+		$('.discount_total').html('$' + $discountTotal);
+		$('.total_price').html('$' + $priceTotal);
+		$('.total_tax').html('$' + $totalTax);
+		$('.grand_total').html('$' + $grandTotal);
+
+		//Reset form
+
 		$("input[type='text']").val("");
-		itemCount();
+
+		}
 
 
 });
-
-});
-
